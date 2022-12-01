@@ -2,21 +2,21 @@
 import FormHeroes from './heroes/form';
 import TableHeroes from './heroes/table';
 
-function App() {
+const App = () => {
   return (
     <div className="container">
-     <div className='row'>
-       <div className='col'>
+     <div className='flex-row'>
+       <div className='flex-large'>
          <h1>ALTA HEROES</h1>
 <FormHeroes/>
        </div>
-       <div className='col'>
+       <div className='flex-large'>
          <h1>TABLA HEROES</h1>
 <TableHeroes/>
        </div>
      </div>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -1,8 +1,9 @@
-import React, { useState} from 'react'
-import { collection, addDoc } from 'firebase/firestore'
-import {db} from '../fireBase/firebase'
+import React, { useEffect, useState} from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import {db} from '../fireBase/firebase';
 
 const FormHeroes = () => {
+
 	const [nomrea, setNomrea]= useState('')
 	const [supher, setSupher]= useState('')
 	const [edaher, setEdaher]= useState(0)
@@ -10,13 +11,13 @@ const FormHeroes = () => {
 	const [oriher, setOriher]= useState('')
     const [carher, setCarher]= useState('')
 	const heroesCollection = collection(db,"heroes")
+
 	const store = async (e) => {
 		e.preventDefault()
 		await addDoc(heroesCollection,{nomrea:nomrea, supher:supher,edaher:edaher, sexher:sexher,oriher:oriher,carher:carher,} )
 	}
 	return (
         <>
-        <h1>ALTA HEROES</h1>
 		<form onSubmit={store}>
 			<label>Nombre Real</label>
 			<input type="text" name="name" value={nomrea} onChange={(e) =>setNomrea(e.target.value)} required/>
@@ -38,21 +39,21 @@ const FormHeroes = () => {
 			<option >Mutante</option>
 			</select>
 			<label>Caracteristicas</label>
-			<input type='checkbox' value={carher} onChange={(e) =>setCarher(e.target.value)} > Volar</input>
-            <input type='checkbox'></input> Velocidad
-            <input type='checkbox'></input> Fuerza
-            <input type='checkbox'></input> Mutacion
-            <input type='checkbox'></input> Vision
-            <input type='checkbox'></input> Oido
-            <input type='checkbox'></input> Invulnerabilidad
-            <input type='checkbox'></input> Telepatia
-            <input type='checkbox'></input> Telequinesis
-            <input type='checkbox'></input> Lanza rayos
-            <input type='checkbox'></input> Artes marciales
-            <input type='checkbox'></input> Inteligencia
-            <input type='checkbox'></input> Acrobacia
-            <input type='checkbox'></input> Armadura
-            <input type='checkbox'></input> Tecnologia
+			<input type='checkbox'/> Volar
+            <input type='checkbox'/> Velocidad
+            <input type='checkbox'/> Fuerza
+            <input type='checkbox'/> Mutacion
+            <input type='checkbox'/> Vision
+            <input type='checkbox'/> Oido
+            <input type='checkbox'/> Invulnerabilidad
+            <input type='checkbox'/> Telepatia
+            <input type='checkbox'/> Telequinesis
+            <input type='checkbox'/> Lanza rayos
+            <input type='checkbox'/> Artes marciales
+            <input type='checkbox'/> Inteligencia
+            <input type='checkbox'/> Acrobacia
+            <input type='checkbox'/> Armadura
+            <input type='checkbox'/> Tecnologia
             <br></br>
 			<button type='submit' className="btn btn-dark">GUARDAR</button>
             <button type='submit' className="btn btn-danger">CANCELAR</button>

@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import {collection, getDocs, doc, deleteDoc} from 'firebase/firestore'
+import {collection, getDocs , doc, deleteDoc} from 'firebase/firestore'
 import {db} from '../fireBase/firebase'
 
 const TableHeroes = () => {
@@ -11,9 +11,13 @@ const TableHeroes = () => {
   setHeroes(
     data.docs.map((doc) => ({...doc.data(),id:doc.id}))
   )
-  // console.log(heroes)
+  //  console.log(heroes)
   }
-
+  const deleteHero = async (id) => {
+    const heroDoc = doc(db, "heroes",id)
+    await deleteDoc(heroDoc)
+    getHeroes()
+  }
   useEffect(() => {
     getHeroes()
   },[])
